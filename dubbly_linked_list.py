@@ -41,6 +41,53 @@ class Dll:
       n=Node(temp,data,temp.next)
       if temp.next is not None:
         temp.next.prev=n
-      temp.next=n
+      else:  
+        temp.next=n
+    
+  def print_list(self):
+    temp=self.start
+    while temp!=None:
+      print(temp.item,end="  ")
+      temp=temp.next
+      
+  def delete_first(self):
+    if self.start is not None:
+      self.start=self.start.next
+      if self.start is not None:
+        self.start.prev=None   
+          
+  def delete_last(self):
+    if self.start==None: #empty list checking
+      pass
+    elif self.start.next is None: #only one node is checking
+      self.start=None
+      
+    else:                  #checking how many nodes are exist in node
+      temp=self.start
+      while temp.next is not None:
+        temp=temp.next
+      temp.prev.next=None
+      
+  def delete_item(self,data)    :
+    if self.start ==None:
+      pass
+    elif self.start.next is None:
+      if self.start.item==data:
+        self.start=None
+    else:
+      temp=self.start
+      if temp.item==data:
+        self.start=temp.next
+        temp.next.prev=None
+      else:
+        while temp.next is not None:
+            
         
+      
+         
+      
+      
+      
+    
+    
             
