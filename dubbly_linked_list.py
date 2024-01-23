@@ -12,7 +12,7 @@ class Dll:
     return self.start==None 
   
   def insert_at_start(self,data):
-    n=None(None,data,self.start)
+    n=Node(None,data,self.start)
     if not self.is_empty():
       self.start.prev=n
     self.start=n 
@@ -41,8 +41,7 @@ class Dll:
       n=Node(temp,data,temp.next)
       if temp.next is not None:
         temp.next.prev=n
-      else:  
-        temp.next=n
+      temp.next=n
     
   def print_list(self):
     temp=self.start
@@ -71,20 +70,43 @@ class Dll:
   def delete_item(self,data)    :
     if self.start ==None:
       pass
-    elif self.start.next is None:
-      if self.start.item==data:
-        self.start=None
     else:
       temp=self.start
-      if temp.item==data:
-        self.start=temp.next
-        temp.next.prev=None
-      else:
-        while temp.next is not None:
-            
+      while temp is not None:
+        if temp.item==data:
+          temp.next.prev=temp.prev
+        if temp.prev is not None:
+          temp.prev.next=temp.next
+        else:
+          self.start=temp.next
+        break
+      temp=temp.next   
+  
+  def __iter__(self):
+    return DllIterator(self.start)
+class DllIterator:
+  def __init__ (self,start)  :
+    self.current=start
+  def __iter__(self):
+    return self
+  def __next__(self):
+    if not self.current:
+      raise StopIteration
+    data =self.current.item
+    self.current =self.current.next
+    return data  
+  
+mylist=Dll()  
+mylist.insert_at_start(10)
+mylist.insert_at_last(30)
+mylist.insert_after(mylist.search(10),20)
+for x in mylist:
+  print(x, end='  ')
+print()  
+
         
-      
-         
+
+
       
       
       
