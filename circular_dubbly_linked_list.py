@@ -20,7 +20,54 @@ class Cdll:
       n.prev=self.start.prev  #and put start prev reference into new node prev
       self.start.prev.next=n   #This is last node and here put new node's reference
       self.start.prev=n        #this is new node's reference put into first prev
-    self.start=n  #it's new node's reference in start it have to put both block that's why it outside the blocks  
+    self.start=n  #it's new node's reference in start it have to put both block that's why it outside the blocks
+    
+  def insert_at_last(self,data):
+    n=Node(data)
+    if self.is_empty():
+      n.next=n
+      n.prev=n
+      self.start=n
+    else:
+      n.next=self.start
+      n.prev=self.start.prev
+      n.prev.next=n
+      self.start.prev=n 
+      
+  def search(self,data):
+    temp=self.start
+    if temp==None:
+      return None
+    if temp.item==data:
+      return temp
+    else:
+      temp=temp.next
+    while temp !=self.start:
+      if temp.item==data:
+        return temp
+      temp=temp.next
+    return None
+     
+  def insert_after(self,temp,data):
+    if temp is not None:
+      n=Node(data)
+      n.next=temp.next
+      n.prev=temp
+      temp.next.prev=n
+      temp.next=n 
+   
+  def print_list(self):
+    temp=self.start
+    if temp is not None:
+      print(temp.item, end='  ')
+      temp=temp.next
+      while temp is not self.start:
+        print(temp.item,end='  ')
+        temp=temp.next    
+      
+     
+      
+        
   
         
     

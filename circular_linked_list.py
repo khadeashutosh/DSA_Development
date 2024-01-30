@@ -85,7 +85,7 @@ class Cll:
             if temp.next.item==data:
               temp.next=temp.next.next
               break
-            temp=temp.next
+            temp=temp.nex
                 
             
         
