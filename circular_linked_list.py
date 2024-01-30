@@ -80,7 +80,7 @@ class Cll:
           temp=self.last.next
           while temp!=self.next:
             if temp.next==self.last:
-              self.delete_last()
+              self.delete_last() 
               break
             if temp.next.item==data:
               temp.next=temp.next.next
