@@ -24,7 +24,7 @@ class Cll:
     if self.is_empty():
       self.last=n
     else:
-      n=next=self.last.next
+      n.next=self.last.next
       self.last.next=n
       self.last=n
   def search(self,data)    :
@@ -78,7 +78,7 @@ class Cll:
           self.delete_first()
         else:  
           temp=self.last.next
-          while temp!=self.next:
+          while temp!=self.last:
             if temp.next==self.last:
               self.delete_last() 
               break
@@ -111,10 +111,13 @@ class CllIterator:
     return data                
 mylist=Cll()
 mylist.insert_at_start(10)
-mylist.insert_at_last(20)
+mylist.insert_at_start(20)
 mylist.insert_at_last(30)
 mylist.insert_at_last(40)
 mylist.insert_after(mylist.search(40),50)
+mylist.delete_first()
+mylist.insert_after(mylist.search(10),20)
+mylist.delete_item(30)
 for x in mylist:
   print(x, end='  ')
 print()
