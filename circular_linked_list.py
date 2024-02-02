@@ -7,7 +7,7 @@ class Cll:
   def __init__(self,last=None):
     self.last=last
   
-  def is_empty(self,data):
+  def is_empty(self):
     return self.last ==None
   
   def insert_at_start(self,data):
@@ -16,7 +16,7 @@ class Cll:
       n.next=n
       self.last=n
     else:
-      n=next=self.last.next
+      n.next=self.last.next
       self.last.next=n
       
   def insert_at_last(self,data):
@@ -85,16 +85,39 @@ class Cll:
             if temp.next.item==data:
               temp.next=temp.next.next
               break
-            temp=temp.nex
-                
-            
-        
-        
+            temp=temp.next
+  def __iter__(self):
+    if self.last==None:
+      return CllIterator(None)
+    else:
+      return CllIterator(self.last.next)
+class CllIterator:
+  def __init__(self,last):
+    self.current=last
+    self.last=last
+    self.count=0
+  def __iter__(self):
+    return self
   
+  def __next__(self):
+    if self.current==None:
+      raise StopIteration
+    if self.current==self.last and self.count==1:
+      raise StopIteration
+    else:
+      self.count=1
+    data=self.current.item
+    self.current=self.current.next
+    return data                
 mylist=Cll()
 mylist.insert_at_start(10)
 mylist.insert_at_last(20)
-print(mylist, end='  ')
+mylist.insert_at_last(30)
+mylist.insert_at_last(40)
+mylist.insert_after(mylist.search(40),50)
+for x in mylist:
+  print(x, end='  ')
+print()
         
        
     
