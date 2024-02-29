@@ -14,7 +14,7 @@ class Stack:
       self.item_count-=1
   def peek(self):
     if not self.is_empty()    :
-      return self.mylist.item
+      return self.mylist.start.item
   def size(self):
     return self.item_count
   
