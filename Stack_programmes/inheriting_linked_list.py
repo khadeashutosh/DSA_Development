@@ -1,6 +1,7 @@
 from singly_linked_list import*
 class Stack(Sll):
   def __init__(self):
+    super(). __init__()
     self.count_item=0
   def is_empty(self):
     return super().is_empty()
@@ -23,4 +24,12 @@ class Stack(Sll):
     
   def size(self):  
     return self.count_item
-    
+
+s1=Stack()    
+s1.push(10)
+s1.push(20)
+s1.push(30)
+s1.push(40)
+print("Top element is ", s1.peek())
+s1.pop()
+print("Top element is ", s1.peek())
