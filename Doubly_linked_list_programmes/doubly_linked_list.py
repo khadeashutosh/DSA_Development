@@ -58,7 +58,7 @@ class Dll:
   def delete_last(self):
     if self.start==None: #empty list checking
       pass
-    elif self.start.next is None: #only one node is checking
+    elif self.start.next is None: #only one node is che cking
       self.start=None
       
     else:                  #checking how many nodes are exist in node
