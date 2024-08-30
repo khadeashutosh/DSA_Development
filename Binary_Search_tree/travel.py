@@ -63,4 +63,42 @@ class BTS:
     if root :
       self.recursion_postorder(root.left,result)
       self.recursion_postorder(root.right,result)   
-      result.append(root.item)      
+      result.append(root.item) 
+
+  def min_value(self,temp):
+    current=temp
+    while current.left is not None:
+      current=current.left
+    return current.item
+
+  def max_value(self,temp):
+    current=temp
+    while current.right is not None:
+      current=current.right
+    return current.item
+  
+  def delete_value(self,data):
+    self.root=self.recursion_delete(self.root, data)
+
+  def recursion_delete(self,root,data):  
+    if root is None:
+      return root
+    if data < root.item:
+      root.left=self.recursion_delete(root.left,data)
+    elif data > root.item:
+      root.right=self.recursion_delete(root.right,data)
+    else:
+      if root.left is None:
+        return root.right
+      elif root.right is None:
+        return root.left
+      
+      root.item=self.min_value(root.right)
+      self.recursion_delete(root.right , root.item)
+    return root
+
+  def size(self):
+    return len(self.inorder())  
+      
+
+               
