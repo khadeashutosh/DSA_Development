@@ -35,7 +35,7 @@ g=Graph(5)
 g.adj_edge(0,1)
 g.adj_edge(1,2)
 g.adj_edge(1,3)
-g.adj_edge(2,3)
+g.adj_edge(2,4)
 g.adj_edge(3,4)
 
 g.print_adj_list()
