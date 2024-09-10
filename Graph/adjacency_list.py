@@ -22,7 +22,7 @@ class Graph:
   def has_edge(self,u,v):
     if 0<=u<self.vertex_count and 0<=v<self.vertex_count:
       return any(vertex==v for vertex, x in self.adj_list[u])
-    else:
+    else: 
       print("Invalid vertex")
       return False 
 
@@ -37,6 +37,6 @@ g.adj_edge(1,2)
 g.adj_edge(1,3)
 g.adj_edge(2,4)
 g.adj_edge(3,4)
-
+  
 g.print_adj_list()
 
